@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{dd-MM-yyyy HH:mm:ss}] %-5level %msg%n" />
+		</Console>
+		<RollingFile name="ConsoleFile" fileName="./log/console.log" filePattern="log/$${date:yyyy-MM}/console/console-%date{yyyy-MM-dd}.log">
+			<PatternLayout pattern="[%d{dd-MM-yyyy HH:mm:ss}] %5p %c{2}: %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.mchange" level="warn" />
+		<Root level="INFO">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="ConsoleFile" />
+		</Root>
+	</Loggers>
+</Configuration>
